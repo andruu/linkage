@@ -2,7 +2,7 @@ var validator = require('validator');
 var redis     = require("redis");
 var client    = redis.createClient();
 var models    = require("./models");
-var ShortCode = require("./ShortCode");
+var utils     = require("./utils");
 
 /**
  * Validates URL coming from POST request
@@ -31,7 +31,7 @@ var validateUrl = function (req, res, next) {
  */
 var shortCodeExists = function (req, res, next) {
   var shortCode = req.params.shortCode;
-  var id = ShortCode.getIdFromShortCode(shortCode);
+  var id = utils.getIdFromShortCode(shortCode);
   
   linkFromCache(shortCode, function (err, link) {
     if (err) {

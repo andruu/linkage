@@ -1,7 +1,7 @@
-var redis     = require("redis");
-var client    = redis.createClient();
-var models    = require("./models");
-var ShortCode = require("./ShortCode");
+var redis  = require("redis");
+var client = redis.createClient();
+var models = require("./models");
+var utils  = require("./utils");
 
 /**
  * Create link and return shortcode in callback
@@ -10,7 +10,7 @@ var ShortCode = require("./ShortCode");
  */
 var createLink = function (url, callback) {
   models.Link.create({url: url}).then(function (link) {
-    var shortCode = ShortCode.generateShortCode(link.id);
+    var shortCode = utils.generateShortCode(link.id);
     var key = 'short-code:' + shortCode;
 
     client.set(key, url);
@@ -28,7 +28,7 @@ var createLink = function (url, callback) {
  */
 var createClick = function (shortCode, ip, referrer, userAgent, callback) {
   models.Click.create({
-    linkId:    ShortCode.getIdFromShortCode(shortCode),
+    linkId:    utils.getIdFromShortCode(shortCode),
     ipAddress: ip,
     referrer:  referrer,
     userAgent: userAgent
