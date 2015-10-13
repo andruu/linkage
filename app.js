@@ -35,6 +35,15 @@ app.post('/create', middlewear.validateUrl, function (req, res) {
   });
 });
 
+app.get('/:shortCode/stats', middlewear.shortCodeExists, function (req, res) {
+  var shortCode = req.params.shortCode;
+  var link      = req.retrievedLink;
+
+  services.getStats(shortCode, link, function (err, stats) {
+    res.json(stats);
+  });
+});
+
 app.get('/:shortCode', middlewear.shortCodeExists, function (req, res) {
   res.redirect(req.retrievedLink);
 

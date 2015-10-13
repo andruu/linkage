@@ -31,7 +31,7 @@ var validateUrl = function (req, res, next) {
  */
 var shortCodeExists = function (req, res, next) {
   var shortCode = req.params.shortCode;
-  var id = utils.getIdFromShortCode(shortCode);
+  var id        = utils.getIdFromShortCode(shortCode);
   
   linkFromCache(shortCode, function (err, link) {
     if (err) {

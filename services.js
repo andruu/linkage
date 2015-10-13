@@ -11,7 +11,7 @@ var utils  = require("./utils");
 var createLink = function (url, callback) {
   models.Link.create({url: url}).then(function (link) {
     var shortCode = utils.generateShortCode(link.id);
-    var key = 'short-code:' + shortCode;
+    var key       = 'short-code:' + shortCode;
 
     client.set(key, url);
     callback(null, shortCode);
@@ -37,7 +37,26 @@ var createClick = function (shortCode, ip, referrer, userAgent, callback) {
   });
 };
 
+/**
+ * Get stats for short code
+ * @param {string} shortCode
+ * @param {string} link
+ * @param {requestCallback} callback
+ */
+var getStats = function (shortCode, link, callback) {
+  models.Click.findAndCountAll({where: {linkId: utils.getIdFromShortCode(shortCode)}}).then(function (results) {
+    var stats = {
+      url: link,
+      count: results.count,
+      clicks: results.rows
+    };
+
+    callback(null, stats);
+  });
+}
+
 module.exports = {
   createLink:  createLink,
-  createClick: createClick
+  createClick: createClick,
+  getStats:    getStats
 };
