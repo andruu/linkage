@@ -1,0 +1,21 @@
+{
+  "name": "linkage",
+  "version": "1.0.0",
+  "description": "Url Shortener",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "express-useragent": "^0.2.0",
+    "redis": "^2.2.1",
+    "sequelize": "^3.12.0",
+    "sqlite3": "^3.1.0",
+    "validator": "^4.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
