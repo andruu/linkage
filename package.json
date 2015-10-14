@@ -17,6 +17,7 @@
     "blanket": "^1.1.7",
     "chai": "^3.3.0",
     "fakeredis": "^0.3.3",
+    "istanbul": "^0.3.22",
     "mocha": "^2.3.3",
     "mocha-multi": "^0.7.2",
     "should": "^7.1.0",
@@ -24,18 +25,7 @@
   },
   "scripts": {
     "start": "node app.js",
-    "test": "NODE_ENV=test multi='dot=- html-cov=coverage.html' ./node_modules/mocha/bin/mocha -r blanket --reporter mocha-multi"
-  },
-  "config": {
-    "blanket": {
-      "pattern": [
-        ""
-      ],
-      "data-cover-never": [
-        "node_modules",
-        "test"
-      ]
-    }
+    "test": "NODE_ENV=test ./node_modules/.bin/istanbul cover _mocha"
   },
   "author": "",
   "license": "ISC"
