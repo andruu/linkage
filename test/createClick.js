@@ -28,5 +28,15 @@ describe('Redirect for short code', function () {
           done();
         });
     });
+
+    it('should return a 403 status if no short code exists', function (done) {
+      request(app)
+        .get('/nonexisting')
+        .expect(403)
+        .end(function (err, res) {
+          res.text.should.equal('{"error":"Link not found"}')
+          done();
+        });
+    });
   });
 });
