@@ -4,12 +4,15 @@ var request = require('supertest');
 var should  = require('should');
 var app     = require('../app').app;
 var models  = require('../models');
+var cache   = require('../cache');
 
 describe('Redirect for short code', function () {
   beforeEach(function (done) {
     models.sequelize.sync({force: true})
         .then(function () {
-          done();
+          cache.deletePattern('test:short-code:*', function (err) {
+            done();
+          });
         });
   });
 

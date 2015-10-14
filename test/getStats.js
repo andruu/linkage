@@ -6,12 +6,15 @@ var async    = require('async');
 var app      = require('../app').app;
 var services = require("../services");
 var models   = require('../models');
+var cache    = require('../cache');
 
 describe('Get Stats', function () {
   beforeEach(function (done) {
     models.sequelize.sync({force: true})
         .then(function () {
-          done();
+          cache.deletePattern('test:short-code:*', function (err) {
+            done();
+          });
         });
   });
 

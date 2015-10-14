@@ -3,15 +3,18 @@ var async    = require('async');
 var services = require("../services");
 var models   = require('../models');
 var utils    = require('../utils');
+var cache    = require('../cache');
 
 describe('services', function () {
 	beforeEach(function (done) {
 	    models.sequelize.sync({force: true})
 	        .then(function () {
+	          cache.deletePattern('test:short-code:*', function (err) {
 	            done();
+	          });
 	        });
 	});
-	
+
 	describe('#createLink', function () {
 		it('should create a new link', function (done) {
 			services.createLink('http://apple.com', function (err, shortCode) {
