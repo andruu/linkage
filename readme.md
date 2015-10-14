@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/andruu/linkage.svg?branch=master)](https://travis-ci.org/andruu/linkage) [![Code Climate](https://codeclimate.com/github/andruu/linkage/badges/gpa.svg)](https://codeclimate.com/github/andruu/linkage)
+[![Build Status](https://travis-ci.org/andruu/linkage.svg?branch=master)](https://travis-ci.org/andruu/linkage) [![Code Climate](https://codeclimate.com/github/andruu/linkage/badges/gpa.svg)](https://codeclimate.com/github/andruu/linkage) [![Code Climate](https://codeclimate.com/github/andruu/linkage/badges/gpa.svg)](https://codeclimate.com/github/andruu/linkage)
 
 # Linkage
 
