@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/andruu/linkage.svg?branch=master)](https://travis-ci.org/andruu/linkage)
+
 # Linkage
 
 Simple link tracking tool built with Express.js and Sequelize.
