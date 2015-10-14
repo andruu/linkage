@@ -1,11 +1,13 @@
 var fs        = require("fs");
 var path      = require("path");
 var Sequelize = require("sequelize");
+var env       = process.env.NODE_ENV || "development";
 var db        = {};
 
 var sequelize = new Sequelize(null, null, null, {
   dialect: 'sqlite',
-  storage: 'database.sqlite'
+  storage: './db/' + env + '.sqlite',
+  logging: false
 });
 
 fs

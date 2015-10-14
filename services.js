@@ -63,7 +63,7 @@ var getStats = function (shortCode, link, callback) {
 var getLinks = function (url, callback) {
   models.Link.findAll().then(function (links) {
     links = links.map(function (link) {
-      link = link.get({plain: true});
+      link              = link.get({plain: true});
       link.shortenedUrl = url + '/' + link.shortCode;
 
       return link;
