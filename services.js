@@ -1,5 +1,4 @@
-var redis  = require("redis");
-var client = redis.createClient();
+var cache  = require('./cache');
 var models = require("./models");
 var utils  = require("./utils");
 
@@ -13,7 +12,7 @@ var createLink = function (url, callback) {
     var shortCode = utils.generateShortCode(link.id);
     var key       = 'short-code:' + shortCode;
 
-    client.set(key, url);
+    cache.set(key, url);
     callback(null, shortCode);
   });
 };
@@ -65,6 +64,7 @@ var getLinks = function (url, callback) {
     links = links.map(function (link) {
       link              = link.get({plain: true});
       link.shortenedUrl = url + '/' + link.shortCode;
+      link.statsUrl     = url + '/' + link.shortCode + '/stats';
 
       return link;
     });

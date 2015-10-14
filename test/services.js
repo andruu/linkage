@@ -14,7 +14,7 @@ describe('services', function () {
 	
 	describe('#createLink', function () {
 		it('should create a new link', function (done) {
-			services.createLink('http://somelink.com', function (err, shortCode) {
+			services.createLink('http://apple.com', function (err, shortCode) {
 				if (err) throw err;
 				assert.equal(1, shortCode);
 				done();
@@ -35,7 +35,7 @@ describe('services', function () {
 	describe('#getStats', function () {
 		it('should get stats', function (done) {
 			async.parallel([
-				function (cb) { services.createLink('http://somelink.com', function () {cb(null)}); },
+				function (cb) { services.createLink('http://apple.com', function () {cb(null)}); },
 				function (cb) { services.createClick(1, 'ip', 'referrer', 'userAgent', function () {cb(null)}); },
 				function (cb) { services.createClick(1, 'ip', 'referrer', 'userAgent', function () {cb(null)}); },
 				function (cb) { services.createClick(1, 'ip', 'referrer', 'userAgent', function () {cb(null)}); }
@@ -53,11 +53,11 @@ describe('services', function () {
 	describe('#getLinks', function () {
 		it('should get all the links', function (done) {
 			async.parallel([
-				function (cb) { services.createLink('http://somelink.com', function () {cb(null)}); },
-				function (cb) { services.createLink('http://somelink.com', function () {cb(null)}); },
-				function (cb) { services.createLink('http://somelink.com', function () {cb(null)}); },
-				function (cb) { services.createLink('http://somelink.com', function () {cb(null)}); },
-				function (cb) { services.createLink('http://somelink.com', function () {cb(null)}); }
+				function (cb) { services.createLink('http://apple.com', function () {cb(null)}); },
+				function (cb) { services.createLink('http://apple.com', function () {cb(null)}); },
+				function (cb) { services.createLink('http://apple.com', function () {cb(null)}); },
+				function (cb) { services.createLink('http://apple.com', function () {cb(null)}); },
+				function (cb) { services.createLink('http://apple.com', function () {cb(null)}); }
 			], function (err, results) {
 				services.getLinks('http://theurl', function (err, links) {
 					assert.equal(5, links.length);

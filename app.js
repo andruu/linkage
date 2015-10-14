@@ -1,26 +1,10 @@
-/*
-Creating new links
-
-Post via JSON
-
-curl -X "POST" "http://localhost:3000/create" \
-  -H "Content-Type: application/json" \
-  -d "{\"url\":\"http://www.yahoo.com\"}"
-
-Post via Form
-
-curl -X "POST" "http://localhost:3000/create" \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  --data-urlencode "url=http://www.google.com"
-*/
-
 var express    = require('express');
 var bodyParser = require('body-parser')
 var useragent  = require('express-useragent');
-var app        = express();
 var models     = require("./models");
 var middlewear = require("./middlewear");
 var services   = require("./services");
+var app        = exports.app = express();
 
 app.set('port', process.env.PORT || 3000);
 app.use(useragent.express());

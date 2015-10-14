@@ -16,12 +16,15 @@
   "devDependencies": {
     "blanket": "^1.1.7",
     "chai": "^3.3.0",
+    "fakeredis": "^0.3.3",
     "mocha": "^2.3.3",
-    "mocha-multi": "^0.7.2"
+    "mocha-multi": "^0.7.2",
+    "should": "^7.1.0",
+    "supertest": "^1.1.0"
   },
   "scripts": {
     "start": "node app.js",
-    "test": "NODE_ENV=testing multi='dot=- html-cov=coverage.html' ./node_modules/mocha/bin/mocha -r blanket --reporter mocha-multi"
+    "test": "NODE_ENV=test multi='dot=- html-cov=coverage.html' ./node_modules/mocha/bin/mocha -r blanket --reporter mocha-multi"
   },
   "config": {
     "blanket": {

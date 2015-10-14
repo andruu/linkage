@@ -1,8 +1,7 @@
 var validator = require('validator');
-var redis     = require("redis");
-var client    = redis.createClient();
 var models    = require("./models");
 var utils     = require("./utils");
+var cache     = require('./cache');
 
 /**
  * Validates URL coming from POST request
@@ -73,7 +72,7 @@ var linkFromDatabase = function (id, callback) {
 var linkFromCache = function (shortCode, callback) {
   var lookup = 'short-code:' + shortCode;
 
-  client.get(lookup, function (err, link) {
+  cache.get(lookup, function (err, link) {
     if (! link) {
       callback(true, null);
     } else {
