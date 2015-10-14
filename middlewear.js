@@ -67,7 +67,7 @@ var linkFromDatabase = function (id, callback) {
 
 /**
  * Retrieve link from the cache
- * @param {integer} id
+ * @param {integer} shortCode
  * @param {requestCallback} callback
  */
 var linkFromCache = function (shortCode, callback) {

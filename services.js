@@ -55,8 +55,26 @@ var getStats = function (shortCode, link, callback) {
   });
 }
 
+/**
+ * Get all links
+ * @param {string} url
+ * @param {requestCallback} callback
+ */
+var getLinks = function (url, callback) {
+  models.Link.findAll().then(function (links) {
+    links = links.map(function (link) {
+      link = link.get({plain: true});
+      link.shortenedUrl = url + '/' + link.shortCode;
+
+      return link;
+    });
+    callback(null, links);
+  });
+};
+
 module.exports = {
   createLink:  createLink,
   createClick: createClick,
-  getStats:    getStats
+  getStats:    getStats,
+  getLinks:    getLinks
 };
