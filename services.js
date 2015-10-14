@@ -52,7 +52,7 @@ var getStats = function (shortCode, link, callback) {
 
     callback(null, stats);
   });
-}
+};
 
 /**
  * Get all links

@@ -5,7 +5,7 @@
  */
 var generateShortCode = function (id) {
   return id.toString(36);
-}
+};
 
 /**
  * Parse shortcode and return ID using base 36 conversion
@@ -14,7 +14,7 @@ var generateShortCode = function (id) {
  */
 var getIdFromShortCode = function (shortCode) {
   return parseInt(shortCode, 36);
-}
+};
 
 module.exports = {
   generateShortCode:  generateShortCode,

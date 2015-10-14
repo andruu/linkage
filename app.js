@@ -1,5 +1,5 @@
 var express    = require('express');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 var useragent  = require('express-useragent');
 var models     = require("./models");
 var middlewear = require("./middlewear");

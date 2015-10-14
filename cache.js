@@ -1,6 +1,6 @@
 var env = process.env.NODE_ENV || "development";
 
-if (env == 'test') {
+if (env === 'test') {
   var client = require("fakeredis").createClient();
 } else {
   var client = require("redis").createClient();
