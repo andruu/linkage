@@ -14,12 +14,25 @@
     "validator": "^4.1.0"
   },
   "devDependencies": {
+    "blanket": "^1.1.7",
     "chai": "^3.3.0",
-    "mocha": "^2.3.3"
+    "mocha": "^2.3.3",
+    "mocha-multi": "^0.7.2"
   },
   "scripts": {
     "start": "node app.js",
-    "test": "NODE_ENV=testing node_modules/.bin/mocha"
+    "test": "NODE_ENV=testing multi='dot=- html-cov=coverage.html' ./node_modules/mocha/bin/mocha -r blanket --reporter mocha-multi"
+  },
+  "config": {
+    "blanket": {
+      "pattern": [
+        ""
+      ],
+      "data-cover-never": [
+        "node_modules",
+        "test"
+      ]
+    }
   },
   "author": "",
   "license": "ISC"

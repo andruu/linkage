@@ -50,5 +50,23 @@ describe('services', function () {
 		});
 	});
 
+	describe('#getLinks', function () {
+		it('should get all the links', function (done) {
+			async.parallel([
+				function (cb) { services.createLink('http://somelink.com', function () {cb(null)}); },
+				function (cb) { services.createLink('http://somelink.com', function () {cb(null)}); },
+				function (cb) { services.createLink('http://somelink.com', function () {cb(null)}); },
+				function (cb) { services.createLink('http://somelink.com', function () {cb(null)}); },
+				function (cb) { services.createLink('http://somelink.com', function () {cb(null)}); }
+			], function (err, results) {
+				services.getLinks('http://theurl', function (err, links) {
+					assert.equal(5, links.length);
+					assert.equal('http://theurl/1', links[0].shortenedUrl);
+					done();
+				});
+			});
+		});
+	});
+
 });
 
