@@ -12,17 +12,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.post('/create', middlewear.validateUrl, function (req, res) {
-  var url = req.body.url;
+  var url  = req.body.url;
+  var host = req.protocol + '://' + req.get('host');
 
   services.createLink(url, function (err, shortCode) {
-    res.json({url: 'http://localhost:' + app.get('port') + '/' + shortCode});
+    res.json({url: host + '/' + shortCode});
   });
 });
 
 app.get('/links', function (req, res) {
-  var url = req.protocol + '://' + req.get('host');
+  var host = req.protocol + '://' + req.get('host');
 
-  services.getLinks(url, function (err, links) {
+  services.getLinks(host, function (err, links) {
     res.json(links);
   });
 });
@@ -40,9 +41,7 @@ app.get('/:shortCode', middlewear.shortCodeExists, function (req, res) {
   res.redirect(req.retrievedLink);
 
   // This happens after the redirect async, should be put into background task or queue
-  services.createClick(req.params.shortCode, req.ip, req.get('Referrer'), req.useragent.source, function (err, click) {
-    console.log(click.id);
-  });
+  services.createClick(req.params.shortCode, req.ip, req.get('Referrer'), req.useragent.source, function (err, click) {});
 });
 
 models.sequelize.sync().then(function () {

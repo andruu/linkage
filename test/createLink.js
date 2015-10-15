@@ -27,7 +27,9 @@ describe('Create Link', function () {
         .expect(200)
         .end(function (err, res) {
           should.not.exist(err);
-          res.text.should.equal('{"url":"http://localhost:3000/1"}')
+
+          var obj = JSON.parse(res.text);
+          obj.should.have.keys('url');
           done();
         });
     });
