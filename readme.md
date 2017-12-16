@@ -11,15 +11,15 @@ Start server `npm start`
 
 Run tests `npm test`
 
-###Creating new links
+### Creating new links
 
-####Post via JSON
+#### Post via JSON
 
 	curl -X "POST" "http://localhost:3000/create" \
 	  -H "Content-Type: application/json" \
 	  -d "{\"url\":\"http://www.yahoo.com\"}"
 
-####Post via Form
+#### Post via Form
 
 	curl -X "POST" "http://localhost:3000/create" \
 	  -H "Content-Type: application/x-www-form-urlencoded" \
